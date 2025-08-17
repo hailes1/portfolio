@@ -1,75 +1,57 @@
-# Nuxt Minimal Starter
+# Portfolio
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This template should help get you started developing with Vue 3 in Vite.
 
-## Setup
+## Recommended IDE Setup
 
-Make sure to install dependencies:
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-```bash
-# npm
-npm install
+## Customize configuration
 
-# pnpm
-pnpm install
+See [Vite Configuration Reference](https://vite.dev/config/).
 
-# yarn
-yarn install
+## Project Setup
 
-# bun
-bun install
+```sh
+yarn
 ```
 
-## Development Server
+### Compile and Hot-Reload for Development
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
+```sh
 yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+### Compile and Minify for Production
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
+```sh
 yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+### Run Unit Tests with [Vitest](https://vitest.dev/)
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```sh
+yarn test:unit
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+
+```sh
+yarn test:e2e:dev
+```
+
+This runs the end-to-end tests against the Vite development server.
+It is much faster than the production build.
+
+But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+
+```sh
+yarn build
+yarn test:e2e
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+yarn lint
+```

@@ -1,51 +1,55 @@
 <template>
-  <cv-header :style="headerStyle">
-    <template #header-global>
-      <cv-header-global-action aria-label="Switch" @click="onSwitch">
-        <Sun20 />
-      </cv-header-global-action>
-      <cv-header-global-action aria-label="Archive" @click="onSidebar">
-        <Archive20 />
-      </cv-header-global-action>
-    </template>
-  </cv-header>
+  <div>
+    <Header 
+      :class="[isLeftRailOpen ? 'left-rail-toggled' : '']" 
+      @update:left-rail-open="onLeftRailToggle" 
+    />
+    <div class="left-rail" :class="{ open: isLeftRailOpen }">
+      <!-- <SidePanel /> -->
+    </div>
+  </div>
 </template>
 
 <script>
-import { CvHeader, CvHeaderName, CvHeaderNav, CvHeaderNavItem, CvHeaderGlobalAction } from '@carbon/vue';
-import { Sun20, Archive20 } from '@carbon/icons-vue';
+  import Header from './components/Header.vue';
 
-export default {
-  name: 'Header',
-  components: {
-    CvHeader,
-    CvHeaderName,
-    CvHeaderNav,
-    CvHeaderNavItem,
-    CvHeaderGlobalAction,
-    Archive20,
-    Sun20,
-  },
-  data(){
-    return {
-      isWhiteHeader: false,
-    };
-  },
-  computed: {
-    headerStyle() {
+  export default {
+    name: 'Main Page', 
+    components: {
+      Header,
+    },
+    data() {
       return {
-        backgroundColor: this.isWhiteHeader ? '#eef2f9' : '',
+        isLeftRailOpen: false,
       };
     },
-  },
-  methods: {
-    onSwitch() {
-      this.isWhiteHeader = !this.isWhiteHeader;
-      console.log("Switch clicked");
-    },
-    onSidebar() {
-      console.log("Archive clicked");
-    },
-  },
-}
+    methods: {
+      onLeftRailToggle(val) {
+        this.isLeftRailOpen = val;
+        console.log("Left Rail Toggled:", this.isLeftRailOpen);
+      }
+    }
+  }
 </script>
+
+<style scoped>
+.left-rail-toggled {
+  padding-left: 400px;
+}
+
+.left-rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 400px;
+  height: 100%;
+  background-color: #fbfcf8;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+}
+
+.left-rail.open {
+  transform: translateX(0);
+}
+</style>

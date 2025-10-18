@@ -1,26 +1,26 @@
 <template>
   <cv-header :style="headerStyle">
+    <!-- <cv-header-name :style="headerItemStyle">
+      Quiet Pages: A Zine by and for the Imaginative
+    </cv-header-name> -->
     <template #header-global>
-      <cv-header-global-action aria-label="Switch" @click="onSwitch">
+      <cv-header-global-action aria-label="Switch" @click="onSwitch" :style="headerItemStyle">
         <Sun20 />
-      </cv-header-global-action>
-      <cv-header-global-action aria-label="Archive" @click="onSidebar">
-        <Archive20 />
       </cv-header-global-action>
     </template>
   </cv-header>
 </template>
 
 <script>
-import { CvHeader, CvHeaderName, CvHeaderGlobalAction } from '@carbon/vue'
-import { Sun20, Archive20 } from '@carbon/icons-vue'
+import { CvHeader, CvHeaderGlobalAction } from '@carbon/vue'
+import { Sun20 } from '@carbon/icons-vue'
 
 export default {
-  name: 'Header',
+  name: 'HeaderComponent',
   components: {
     CvHeader,
     CvHeaderGlobalAction,
-    Archive20,
+    // CvHeaderName,
     Sun20,
   },
   data() {
@@ -35,12 +35,16 @@ export default {
         backgroundColor: this.isSwitchOn ? '#d3d3d3' : '',
       }
     },
+    headerItemStyle() {
+      return {
+        color: this.isSwitchOn ? '#000000' : '#d3d3d3',
+      }
+    },
   },
   methods: {
     onSwitch() {
       this.isSwitchOn = !this.isSwitchOn
       this.$emit('update:switch-state', this.isSwitchOn)
-      console.log('Switch clicked')
     },
     onSidebar() {
       this.isLeftRailOpen = !this.isLeftRailOpen
@@ -51,7 +55,12 @@ export default {
 </script>
 
 <style scoped>
-.cv-header-name,
+.cv-header-name {
+  font-family: 'Garamond', 'code-saver', sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 .cv-header-global-action {
   font-family: 'code-saver', sans-serif;
   font-weight: 500;

@@ -1,8 +1,5 @@
 <template>
   <cv-header :style="headerStyle">
-    <!-- <cv-header-name :style="headerItemStyle">
-      Quiet Pages: A Zine by and for the Imaginative
-    </cv-header-name> -->
     <template #header-global>
       <cv-header-global-action aria-label="Switch" @click="onSwitch" :style="headerItemStyle">
         <Sun20 />
@@ -20,7 +17,6 @@ export default {
   components: {
     CvHeader,
     CvHeaderGlobalAction,
-    // CvHeaderName,
     Sun20,
   },
   data() {

@@ -1,23 +1,23 @@
 <template>
   <div>
-    <HeaderComponent
+    <Header
       :class="[isLeftRailOpen ? 'left-rail-toggled' : '']"
       @update:left-rail-open="onLeftRailToggle"
       @update:switch-state="onSwitchToggle"
     />
-    <PuzzleComponent />
+    <Home :isSwitchOn="isSwitchOn" />
   </div>
 </template>
 
 <script>
 import HeaderComponent from './components/Header.vue'
-import PuzzleComponent from './components/Puzzle.vue'
+import HomeComponent from './components/Home.vue'
 
 export default {
   name: 'MainPageLayout',
   components: {
-    HeaderComponent,
-    PuzzleComponent,
+    Header: HeaderComponent,
+    Home: HomeComponent,
   },
   data() {
     return {

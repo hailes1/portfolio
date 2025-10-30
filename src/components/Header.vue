@@ -9,7 +9,16 @@
 </template>
 
 <script>
-import { CvHeader, CvHeaderGlobalAction } from '@carbon/vue'
+import {
+  CvHeader,
+  CvHeaderGlobalAction,
+  CvSideNav,
+  CvSideNavItems,
+  CvSideNavMenuItem,
+  CvSideNavLink,
+  CvSideNavMenuDivider,
+  CvSideNavMenu,
+} from '@carbon/vue'
 import { Sun20 } from '@carbon/icons-vue'
 
 export default {
@@ -18,6 +27,13 @@ export default {
     CvHeader,
     CvHeaderGlobalAction,
     Sun20,
+    CvHeader,
+    CvSideNav,
+    CvSideNavItems,
+    CvSideNavMenuItem,
+    CvSideNavLink,
+    CvSideNavMenuDivider,
+    CvSideNavMenu,
   },
   data() {
     return {

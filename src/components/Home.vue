@@ -1,4 +1,5 @@
 <template>
+  <!-- Original content in original position -->
   <div class="intro-container">
     <div>
       <cv-breadcrumb :style="breadCrumbStyle">
@@ -12,24 +13,8 @@
     </div>
   </div>
   <!-- <div class="chart-container" :style="chartStyle">
-    <NLPResearch />
-  </div> -->
-  <div class="quiet-subfooter">
-    <cv-button-set>
-      <cv-button
-        kind="primary"
-        :style="{ backgroundColor: '#8A3FFC', borderColor: '#8A3FFC', minWidth: '340px' }"
-      />
-      <cv-button
-        kind="primary"
-        :style="{ backgroundColor: '#0F62FE', borderColor: '#0F62FE', minWidth: '340px' }"
-      />
-      <cv-button
-        kind="primary"
-        :style="{ backgroundColor: '#24A148', borderColor: '#24A148', minWidth: '340px' }"
-      />
-    </cv-button-set>
-  </div>
+      <NLPResearch />
+    </div> -->
 </template>
 
 <script>
@@ -88,6 +73,13 @@ export default {
   left: 50px;
   width: 25%;
   font-weight: bold;
+  z-index: 10;
+  transition: margin-left 0.3s ease;
+  color: inherit;
+}
+
+.intro-container .cv-tag {
+  margin-top: 10px;
 }
 
 .quiet-title {
@@ -106,18 +98,6 @@ export default {
   font-size: clamp(48px, 10vw, 144px);
 }
 
-.quiet-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 50px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
 .quiet-title--footer {
   margin: 0;
 }
@@ -131,23 +111,35 @@ export default {
   padding: 10px;
   box-sizing: border-box;
   overflow: auto;
+  z-index: 1;
+}
+</style>
+
+<style>
+/* Global styles to respond to side nav toggle */
+.side-nav-expanded .intro-container {
+  margin-left: 300px;
 }
 
-.intro-container .cv-tag {
-  margin-top: 10px;
+.side-nav-expanded .chart-container {
+  margin-left: 300px;
 }
 
-.quiet-subfooter {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 32px;
-  padding-bottom: 16px;
-  z-index: 10;
+/* Grid lines stay black in light mode */
+body.dark-mode .blueprint-grid {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.15) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+}
+
+/* Box borders stay black in light mode */
+body.dark-mode .blueprint-box {
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .blueprint-box.box-4 {
+  border-color: rgba(0, 0, 0, 0.2);
 }
 </style>

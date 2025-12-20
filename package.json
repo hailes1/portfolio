@@ -24,7 +24,8 @@
     "carbon-components": "^10.58.15",
     "d3": "^7.9.0",
     "gsap": "^3.13.0",
-    "vue": "^3.5.18"
+    "vue": "^3.5.18",
+    "vue-mermaid-string": "^8.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",

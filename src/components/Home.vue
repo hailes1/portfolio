@@ -11,19 +11,8 @@
       <cv-tag @remove="onRemove" label="Prose" kind="green" />
     </div>
   </div>
-  <div class="chart-container" :style="breadCrumbStyle">
-    <!-- <cv-tile
-      :expanded="isTileExpanded"
-      kind="expandable"
-      @click="toggleTile"
-      :style="tileBackgroundStyle"
-    > -->
-    <!-- Charting -->
-    <!-- <LineChart :isSwitchOn="isSwitchOn" /> -->
-    <!-- </cv-tile> -->
-  </div>
-  <!-- <div class="quiet-footer" :style="breadCrumbStyle">
-    <h1 class="quiet-title quiet-title--footer">QUIET PAGES</h1>
+  <!-- <div class="chart-container" :style="chartStyle">
+    <NLPResearch />
   </div> -->
   <div class="quiet-subfooter">
     <cv-button-set>
@@ -44,32 +33,17 @@
 </template>
 
 <script>
-import {
-  CvBreadcrumb,
-  CvBreadcrumbItem,
-  CvTag,
-  CvTile,
-  CvContentSwitcherContent,
-  CvButtonSet,
-  CvButton,
-  CvContentSwitcher,
-  CvContentSwitcherButton,
-} from '@carbon/vue'
-import LineChart from './Charts/LineChart/LineChart.vue'
+import { CvBreadcrumb, CvTag, CvButtonSet, CvButton } from '@carbon/vue'
+import NLPResearch from './Flow-Charts/NLPResearch.vue'
 
 export default {
   name: 'HomeComponent',
   components: {
     CvBreadcrumb,
-    CvBreadcrumbItem,
-    CvTile,
     CvTag,
-    LineChart,
     CvButtonSet,
     CvButton,
-    CvContentSwitcherContent,
-    CvContentSwitcher,
-    CvContentSwitcherButton,
+    NLPResearch,
   },
   props: {
     isSwitchOn: {
@@ -88,21 +62,17 @@ export default {
         color: this.isSwitchOn ? '#000000' : '#ffffff',
       }
     },
-    tileBackgroundStyle() {
+    chartStyle() {
       return {
-        backgroundColor: !this.isSwitchOn ? '#000000' : '#d3d3d3',
-      }
-    },
-    tileStyle() {
-      return {
-        backgroundColor: '#d2b04c',
-        color: '#1f1f1f',
+        width: '100%',
+        height: '100%',
+        boxSizing: 'border-box',
       }
     },
   },
   methods: {
-    toggleTile() {
-      this.isTileExpanded = !this.isTileExpanded
+    onRemove() {
+      // Handle tag removal if needed
     },
   },
 }
@@ -156,24 +126,13 @@ export default {
   position: absolute;
   top: 100px;
   right: 50px;
-  width: 50%;
-  height: calc(100vh - 100px);
+  width: calc(50% - 50px);
+  height: calc(100vh - 200px);
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
-.chart-container cv-tile {
-  width: 100%; /* Full width of the container */
-  height: 100%; /* Full height of the container */
-  padding: 10px 0 0 10px; /* 10px left and top padding */
-  box-sizing: border-box; /* Ensure padding does not affect the width and height calculation */
-}
-
-.cv-content-switcher-button:hover {
-  background-color: #0000ff; /* Ensure consistent color for active, focus, and hover states */
-  color: #ffffff; /* Optional: Set text to white for contrast */
-  border-color: #0000ff; /* Ensures border doesn't cause color changes */
-  outline: none; /* Removes default browser focus outline if that's an issue */
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
 .intro-container .cv-tag {
   margin-top: 10px;
 }
@@ -182,10 +141,13 @@ export default {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0; /* sits below the footer title */
+  bottom: 0;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  padding-right: 32px;
+  padding-bottom: 16px;
+  z-index: 10;
 }
 </style>

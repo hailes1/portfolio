@@ -8,27 +8,6 @@
         <Sun20 />
       </cv-header-global-action>
     </template>
-    <template v-slot:left-panels>
-      <cv-side-nav
-        id="side-nav"
-        @panel-resize="onPanelResize"
-        :rail="true"
-        :fixed="useFixed"
-        :expanded="expandedSideNav"
-        :style="headerStyle"
-      >
-        <cv-side-nav-items :style="!headerStyle">
-          <!-- <cv-side-nav-link href="javascript:void(0)" :style="headerItemStyle">
-            <template v-slot:nav-icon :style="headerItemStyle"><ConnectionTwoWay16 /></template>
-            Random experiment
-          </cv-side-nav-link :style="headerItemStyle">
-          <cv-side-nav-link href="javascript:void(0)" :style="headerItemStyle">
-            <template v-slot:nav-icon :style="headerItemStyle"><MachineLearningModel16 /></template>
-            Reduce motion
-          </cv-side-nav-link> -->
-        </cv-side-nav-items>
-      </cv-side-nav>
-    </template>
   </cv-header>
 </template>
 

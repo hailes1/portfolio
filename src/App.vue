@@ -18,23 +18,18 @@
     <div>
       <Home :isSwitchOn="isSwitchOn" />
     </div>
-    <!-- <div class="footer">
-      <Footer />
-    </div> -->
   </div>
 </template>
 
 <script>
 import HeaderComponent from './components/Header.vue'
 import HomeComponent from './components/Home.vue'
-import FooterComponent from './components/Footer.vue'
 
 export default {
   name: 'MainPageLayout',
   components: {
     Header: HeaderComponent,
     Home: HomeComponent,
-    Footer: FooterComponent,
   },
   data() {
     return {

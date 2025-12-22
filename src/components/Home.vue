@@ -1,5 +1,4 @@
 <template>
-  <!-- Original content in original position -->
   <div class="intro-container">
     <div>
       <cv-breadcrumb :style="breadCrumbStyle">
@@ -12,14 +11,37 @@
       <cv-tag @remove="onRemove" label="Prose" kind="green" />
     </div>
   </div>
-  <!-- <div class="chart-container" :style="chartStyle">
-      <NLPResearch />
-    </div> -->
+  <div class="personality-buttons">
+    <div>
+      <cv-breadcrumb :style="breadCrumbStyle">
+        Transform is subtle enough; any more feels jumpy.
+      </cv-breadcrumb>
+      <PersonalityButton />
+    </div>
+  </div>
+  <div class="breathing-date">
+    <div>
+      <cv-breadcrumb :style="breadCrumbStyle">
+        A subtle date-picker study No validation, no urgency — just tone, spacing, and state.
+      </cv-breadcrumb>
+      <DateRangeStudy :isSwitchOn="isSwitchOn" />
+    </div>
+  </div>
+  <div class="field-study">
+    <div>
+      <cv-breadcrumb :style="breadCrumbStyle">
+        Carbon input, but you’re studying timing and emphasis, not validation logic.
+      </cv-breadcrumb>
+      <FieldStudy />
+    </div>
+  </div>
 </template>
 
 <script>
 import { CvBreadcrumb, CvTag, CvButtonSet, CvButton } from '@carbon/vue'
-import NLPResearch from './Flow-Charts/NLPResearch.vue'
+import PersonalityButton from './Buttons.vue'
+import DateRangeStudy from './Date.vue'
+import FieldStudy from './Forms.vue'
 
 export default {
   name: 'HomeComponent',
@@ -28,7 +50,9 @@ export default {
     CvTag,
     CvButtonSet,
     CvButton,
-    NLPResearch,
+    PersonalityButton,
+    DateRangeStudy,
+    FieldStudy,
   },
   props: {
     isSwitchOn: {
@@ -82,40 +106,44 @@ export default {
   margin-top: 10px;
 }
 
-.quiet-title {
-  margin: 0 0 12px 0;
-  font-family:
-    'IBM Plex Sans',
-    system-ui,
-    -apple-system,
-    Segoe UI,
-    Roboto,
-    Arial,
-    sans-serif;
-  font-weight: 800;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  font-size: clamp(48px, 10vw, 144px);
-}
-
-.quiet-title--footer {
-  margin: 0;
-}
-
-.chart-container {
+.personality-buttons {
+  display: flex;
+  flex-direction: column;
+  font-family: 'IBM Plex Sans';
   position: absolute;
-  top: 100px;
-  right: 50px;
-  width: calc(50% - 50px);
-  height: calc(100vh - 200px);
-  padding: 10px;
-  box-sizing: border-box;
-  overflow: auto;
-  z-index: 1;
+  top: 400px;
+  left: 50px;
+  width: 25%;
+  font-weight: bold;
+  z-index: 10;
+  transition: margin-left 0.3s ease;
+  color: inherit;
 }
-</style>
 
-<style>
+.personality-buttons .cv-breadcrumb {
+  margin-bottom: 20px;
+}
+
+.breathing-date {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 500px;
+  width: 25%;
+  z-index: 10;
+  transition: margin-left 0.3s ease;
+}
+
+.field-study {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 150px;
+  left: 900px;
+  width: 25%;
+  z-index: 10;
+  transition: margin-left 0.3s ease;
+}
 /* Global styles to respond to side nav toggle */
 .side-nav-expanded .intro-container {
   margin-left: 300px;

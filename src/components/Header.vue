@@ -1,7 +1,7 @@
 <template>
   <cv-header :style="headerStyle">
     <template #header-global>
-      <cv-header-global-action aria-label="Menu" @click="onSidebar" :style="headerItemStyle">
+      <cv-header-global-action aria-label="Menu" :style="headerItemStyle">
         <Home20 />
       </cv-header-global-action>
       <cv-header-global-action aria-label="Switch" @click="onSwitch" :style="headerItemStyle">
@@ -22,7 +22,7 @@ import {
   CvSideNavMenuDivider,
   CvSideNavMenu,
 } from '@carbon/vue'
-import { Sun20, Home20, ConnectionTwoWay16, MachineLearningModel16 } from '@carbon/icons-vue'
+import { Sun20, Home20 } from '@carbon/icons-vue'
 
 export default {
   name: 'HeaderComponent',
@@ -31,8 +31,6 @@ export default {
     CvHeaderGlobalAction,
     Sun20,
     Home20,
-    ConnectionTwoWay16,
-    MachineLearningModel16,
     CvSideNav,
     CvSideNavItems,
     CvSideNavMenuItem,
@@ -43,7 +41,6 @@ export default {
   data() {
     return {
       isSwitchOn: false,
-      isLeftRailOpen: false,
       expandedSideNav: false,
       useFixed: true,
     }
@@ -66,7 +63,6 @@ export default {
       this.$emit('update:switch-state', this.isSwitchOn)
     },
     onSidebar() {
-      this.isLeftRailOpen = !this.isLeftRailOpen
       this.expandedSideNav = !this.expandedSideNav
       this.$emit('update:left-rail-open', this.isLeftRailOpen)
     },

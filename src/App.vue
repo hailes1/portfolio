@@ -1,22 +1,24 @@
 <template>
-  <div :class="{ 'side-nav-expanded': isLeftRailOpen }">
+  <div :class="{ 'side-nav-expanded': isLeftRailOpen }" class="main-container">
     <Header @update:left-rail-open="onLeftRailToggle" @update:switch-state="onSwitchToggle" />
-    <div class="blueprint-container">
-      <div class="blueprint-grid"></div>
-      <!-- Randomized blueprint boxes -->
-      <div class="blueprint-box box-1"></div>
-      <div class="blueprint-box box-2"></div>
-      <div class="blueprint-box box-3"></div>
-      <div class="blueprint-box box-4"></div>
-      <div class="blueprint-box box-5"></div>
-      <div class="blueprint-box box-6"></div>
-      <div class="blueprint-box box-7"></div>
-      <div class="blueprint-box box-8"></div>
-      <div class="blueprint-box box-9"></div>
-      <div class="blueprint-box box-10"></div>
-    </div>
-    <div>
-      <Home :isSwitchOn="isSwitchOn" />
+    <div class="content">
+      <div class="blueprint-container">
+        <div class="blueprint-grid"></div>
+        <!-- Randomized blueprint boxes -->
+        <div class="blueprint-box box-1"></div>
+        <div class="blueprint-box box-2"></div>
+        <div class="blueprint-box box-3"></div>
+        <div class="blueprint-box box-4"></div>
+        <div class="blueprint-box box-5"></div>
+        <div class="blueprint-box box-6"></div>
+        <div class="blueprint-box box-7"></div>
+        <div class="blueprint-box box-8"></div>
+        <div class="blueprint-box box-9"></div>
+        <div class="blueprint-box box-10"></div>
+      </div>
+      <div>
+        <Home :isSwitchOn="isSwitchOn" />
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +58,16 @@ export default {
 </script>
 
 <style>
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -74,6 +86,7 @@ body.dark-mode {
 }
 
 .footer {
+  flex-shrink: 0; /* Ensures the footer does not grow */
   right: 0;
   bottom: 0;
   z-index: 10;
@@ -85,6 +98,7 @@ body.dark-mode {
 .side-nav-expanded main {
   height: auto; /* Adjust if necessary */
 }
+
 .blueprint-container {
   position: relative;
   width: 100%;
@@ -133,7 +147,6 @@ body.dark-mode {
   width: 180px;
   height: 240px;
 }
-
 .box-2 {
   top: 45%;
   left: 12%;
@@ -141,14 +154,12 @@ body.dark-mode {
   height: 150px;
   border: none;
 }
-
 .box-3 {
   top: 25%;
   right: 20%;
   width: 250px;
   height: 380px;
 }
-
 .box-4 {
   top: 60%;
   left: 35%;
@@ -157,7 +168,6 @@ body.dark-mode {
   border-style: dashed;
   border-color: rgba(255, 255, 255, 0.2);
 }
-
 .box-5 {
   top: 10%;
   left: 50%;
@@ -165,7 +175,6 @@ body.dark-mode {
   height: 200px;
   border-width: 2px;
 }
-
 .box-6 {
   bottom: 25%;
   right: 15%;
@@ -173,7 +182,6 @@ body.dark-mode {
   height: 290px;
   border: none;
 }
-
 .box-7 {
   top: 70%;
   left: 20%;
@@ -181,14 +189,12 @@ body.dark-mode {
   height: 120px;
   border-style: dotted;
 }
-
 .box-8 {
   top: 35%;
   right: 8%;
   width: 160px;
   height: 160px;
 }
-
 .box-9 {
   bottom: 15%;
   left: 45%;
@@ -197,7 +203,6 @@ body.dark-mode {
   border-width: 1.5px;
   border-style: dashed;
 }
-
 .box-10 {
   top: 5%;
   left: 30%;

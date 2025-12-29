@@ -9,10 +9,21 @@
     </div>
   </div>
   <div>
-    <div class="fold">
-      <cv-breadcrumb :style="breadCrumbStyle" class="home-page-text"> 001 - Menu </cv-breadcrumb>
-      <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" />
-      <cv-tag @remove="onRemove" label="Tone Adjustments and Negative Space" kind="green" />
+    <div class="menu">
+      <cv-button aria-label="button story" @click="navigateTo('/motion')" default="sm" size="sm">
+        001 - Timing Studies and Motion</cv-button
+      >
+      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+        002 - Tone Adjustments and Negative Space</cv-button
+      >
+      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+        003 - Scroll as Narrative Motion</cv-button
+      >
+      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+        004 - Shadows as Hierarchy (not decoration)</cv-button
+      >
+      <!-- <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" /> -->
+      <!-- <cv-tag @remove="onRemove" label="Tone Adjustments and Negative Space" kind="green" /> -->
     </div>
   </div>
   <div class="scroll">
@@ -56,13 +67,16 @@ export default {
   computed: {
     breadCrumbStyle() {
       return {
-        color: this.isSwitchOn ? '#000000' : '#ffffff',
+        color: this.isSwitchOn ? '#000000' : '#d3d3d3',
       }
     },
   },
   methods: {
     onRemove() {
       // Handle tag removal if needed
+    },
+    navigateTo(route) {
+      this.$router.push(route)
     },
   },
 }
@@ -101,12 +115,26 @@ export default {
   width: 25%;
 }
 
-.fold {
+.menu {
   position: absolute;
-  top: 50%;
+  top: 30%;
   right: 50px;
   transform: translateY(-50%);
   width: 25%;
+
+  .cv-button {
+    margin-bottom: 10px; // Adds spacing between buttons
+
+    &:hover {
+      background-color: darken($color: #d3d3d3, $amount: 10%);
+      border-color: darken($color: #ffffff, $amount: 10%);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .cv-breadcrumb {
+    margin-bottom: 20px; // Adds spacing between the breadcrumb and the buttons
+  }
 
   .cv-tag {
     cursor: pointer;

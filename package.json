@@ -25,7 +25,8 @@
     "d3": "^7.9.0",
     "gsap": "^3.13.0",
     "vue": "^3.5.18",
-    "vue-mermaid-string": "^8.0.1"
+    "vue-mermaid-string": "^8.0.1",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",

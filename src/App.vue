@@ -4,20 +4,16 @@
     <div class="content">
       <div class="blueprint-container">
         <div class="blueprint-grid"></div>
-        <!-- Randomized blueprint boxes -->
-        <div class="blueprint-box box-1"></div>
-        <div class="blueprint-box box-2"></div>
-        <div class="blueprint-box box-3"></div>
-        <div class="blueprint-box box-4"></div>
-        <div class="blueprint-box box-5"></div>
-        <div class="blueprint-box box-6"></div>
-        <div class="blueprint-box box-7"></div>
-        <div class="blueprint-box box-8"></div>
-        <div class="blueprint-box box-9"></div>
-        <div class="blueprint-box box-10"></div>
+        <div
+          v-for="index in 15"
+          :key="'box-' + index"
+          class="blueprint-box"
+          :class="'box-' + index + (blueprintVisible ? ' show-blueprint' : '')"
+        ></div>
       </div>
       <div>
         <Home :isSwitchOn="isSwitchOn" />
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -37,7 +33,13 @@ export default {
     return {
       isLeftRailOpen: false,
       isSwitchOn: false,
+      blueprintVisible: false,
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.blueprintVisible = true
+    }, 500) // Trigger blueprint visibility
   },
   methods: {
     onLeftRailToggle(val) {
@@ -47,11 +49,10 @@ export default {
     onSwitchToggle(val) {
       this.isSwitchOn = val
       if (val) {
-        document.body.classList.add('dark-mode')
+        document.body.classList.add('light-mode')
       } else {
-        document.body.classList.remove('dark-mode')
+        document.body.classList.remove('light-mode')
       }
-      console.log('Switch Toggled:', this.isSwitchOn)
     },
   },
 }
@@ -76,27 +77,13 @@ body {
   overflow: auto; /* Ensure body is scrollable */
 }
 
-body.dark-mode {
+body.light-mode {
   background-color: #d3d3d3;
 }
 
 /* Remove any constraints from .main */
 .main {
   max-height: none;
-}
-
-.footer {
-  flex-shrink: 0; /* Ensures the footer does not grow */
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  transition: right 0.3s ease;
-  color: #fff; /* Optional: Ensure text is visible against background */
-  padding: 10px;
-}
-
-.side-nav-expanded main {
-  height: auto; /* Adjust if necessary */
 }
 
 .blueprint-container {
@@ -135,10 +122,16 @@ body.dark-mode {
 
 .blueprint-box {
   position: fixed;
+  opacity: 0;
+  transition: opacity 0.5s ease;
   pointer-events: none;
   z-index: 0;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: transparent;
+}
+
+.show-blueprint {
+  opacity: 1;
 }
 
 .box-1 {
@@ -146,6 +139,7 @@ body.dark-mode {
   left: 8%;
   width: 180px;
   height: 240px;
+  transition-delay: 0.1s;
 }
 .box-2 {
   top: 45%;
@@ -153,12 +147,14 @@ body.dark-mode {
   width: 320px;
   height: 150px;
   border: none;
+  transition-delay: 0.2s;
 }
 .box-3 {
   top: 25%;
   right: 20%;
   width: 250px;
   height: 380px;
+  transition-delay: 0.3s;
 }
 .box-4 {
   top: 60%;
@@ -167,6 +163,7 @@ body.dark-mode {
   height: 140px;
   border-style: dashed;
   border-color: rgba(255, 255, 255, 0.2);
+  transition-delay: 0.4s;
 }
 .box-5 {
   top: 10%;
@@ -174,6 +171,7 @@ body.dark-mode {
   width: 420px;
   height: 200px;
   border-width: 2px;
+  transition-delay: 0.5s;
 }
 .box-6 {
   bottom: 25%;
@@ -181,6 +179,7 @@ body.dark-mode {
   width: 190px;
   height: 290px;
   border: none;
+  transition-delay: 0.6s;
 }
 .box-7 {
   top: 70%;
@@ -188,12 +187,14 @@ body.dark-mode {
   width: 280px;
   height: 120px;
   border-style: dotted;
+  transition-delay: 0.7s;
 }
 .box-8 {
   top: 35%;
   right: 8%;
   width: 160px;
   height: 160px;
+  transition-delay: 0.8s;
 }
 .box-9 {
   bottom: 15%;
@@ -202,6 +203,7 @@ body.dark-mode {
   height: 180px;
   border-width: 1.5px;
   border-style: dashed;
+  transition-delay: 0.9s;
 }
 .box-10 {
   top: 5%;
@@ -209,5 +211,45 @@ body.dark-mode {
   width: 200px;
   height: 320px;
   border: none;
+  transition-delay: 1s;
+}
+.box-11 {
+  top: 15%;
+  right: 10%;
+  width: 220px;
+  height: 260px;
+  transition-delay: 1.1s;
+}
+.box-12 {
+  bottom: 20%;
+  left: 25%;
+  width: 300px;
+  height: 230px;
+  border-style: solid;
+  transition-delay: 1.2s;
+}
+.box-13 {
+  top: 50%;
+  right: 5%;
+  width: 180px;
+  height: 180px;
+  transition-delay: 1.3s;
+}
+.box-14 {
+  bottom: 10%;
+  left: 60%;
+  width: 250px;
+  height: 100px;
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.3);
+  transition-delay: 1.4s;
+}
+.box-15 {
+  top: 8%;
+  left: 40%;
+  width: 150px;
+  height: 350px;
+  border-width: 2.5px;
+  transition-delay: 1.5s;
 }
 </style>

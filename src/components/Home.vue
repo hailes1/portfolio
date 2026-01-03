@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="intro">
-      <cv-breadcrumb :style="breadCrumbStyle" class="home-page-text">
+      <cv-breadcrumb :class="breadcrumbClass">
         The Quiet Pages is a digital sketchbook: a space for experimenting with web components,
         patterns, and interactions without the pressure of a polished final product. Each page is a
         small, quiet experiment a way to learn, refine, and shape before they find a louder stage.
@@ -27,9 +27,21 @@
     </div>
   </div>
   <div class="scroll">
-    <cv-breadcrumb :style="breadCrumbStyle" class="home-page-text">
-      [Scroll down to explore more experiments]
+    <cv-breadcrumb :class="breadcrumbClass">
+      [Hover on the buttons to explore more experiments]
     </cv-breadcrumb>
+    <a
+      href="https://open.spotify.com/album/7f077HG1g8MBMhC3eBD7fC?si=3s_5ge0eQo-A6WtJgdGlsA"
+      target="_blank"
+    >
+      <CdSpinner
+        src="src/assets/images/bahir.jpg"
+        class="now-playing"
+        :size="150"
+        :speed="10"
+        :paused="false"
+      />
+    </a>
   </div>
 </template>
 
@@ -42,6 +54,7 @@ import {
   CvDatePicker,
   CvCodeSnippet,
 } from '@carbon/vue'
+import CdSpinner from './CdSpinner.vue'
 
 export default {
   name: 'HomeComponent',
@@ -52,6 +65,7 @@ export default {
     CvButton,
     CvDatePicker,
     CvCodeSnippet,
+    CdSpinner,
   },
   props: {
     isSwitchOn: {
@@ -65,10 +79,8 @@ export default {
     }
   },
   computed: {
-    breadCrumbStyle() {
-      return {
-        color: this.isSwitchOn ? '#000000' : '#d3d3d3',
-      }
+    breadcrumbClass() {
+      return this.isSwitchOn ? 'home-page-text active' : 'home-page-text'
     },
   },
   methods: {
@@ -106,6 +118,11 @@ export default {
   font-weight: 400;
   line-height: 1.33333;
   letter-spacing: 0.32px;
+  color: #d3d3d3;
+
+  &.active {
+    color: #000000;
+  }
 }
 
 .scroll {
@@ -113,6 +130,13 @@ export default {
   bottom: 50px;
   left: 50px;
   width: 25%;
+}
+
+.now-playing {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 10;
 }
 
 .menu {

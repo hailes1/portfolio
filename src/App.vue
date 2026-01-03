@@ -13,7 +13,7 @@
       </div>
       <div>
         <Home :isSwitchOn="isSwitchOn" />
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
       </div>
     </div>
   </div>

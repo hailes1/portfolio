@@ -10,9 +10,9 @@
   </div>
   <div>
     <div class="menu">
-      <cv-button aria-label="button story" @click="navigateTo('/motion')" default="sm" size="sm">
-        001 - Timing Studies and Motion</cv-button
-      >
+      <cv-button @click="navigateTo('/charting')" default="large" size="large">
+        <ChartEvaluation20 /> <cv-breadcrumb class="label"> 001 - Charts</cv-breadcrumb>
+      </cv-button>
       <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
         002 - Tone Adjustments and Negative Space</cv-button
       >
@@ -28,7 +28,7 @@
   </div>
   <div class="scroll">
     <cv-breadcrumb :class="breadcrumbClass">
-      [Hover on the buttons to explore more experiments]
+      [Click on the buttons to explore more experiments]
     </cv-breadcrumb>
     <a
       href="https://open.spotify.com/album/7f077HG1g8MBMhC3eBD7fC?si=3s_5ge0eQo-A6WtJgdGlsA"
@@ -53,8 +53,11 @@ import {
   CvButton,
   CvDatePicker,
   CvCodeSnippet,
+  CvIconButton,
 } from '@carbon/vue'
 import CdSpinner from './CdSpinner.vue'
+import { Bee20 } from '@carbon/icons-vue'
+import { ChartEvaluation20 } from '@carbon/icons-vue'
 
 export default {
   name: 'HomeComponent',
@@ -65,6 +68,9 @@ export default {
     CvButton,
     CvDatePicker,
     CvCodeSnippet,
+    Bee20,
+    ChartEvaluation20,
+    CvIconButton,
     CdSpinner,
   },
   props: {
@@ -146,6 +152,9 @@ export default {
   transform: translateY(-50%);
   width: 25%;
 
+  .label {
+    padding-left: 10px;
+  }
   .cv-button {
     margin-bottom: 10px; // Adds spacing between buttons
 

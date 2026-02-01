@@ -1,10 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeComponent from '../components/Home.vue'
-import MotionComponent from '../components/motion.vue'
+import ChartingComponent from '../components/Charting.vue'
 
 const routes = [
-  { path: '/', component: HomeComponent },
-  { path: '/motion', component: MotionComponent },
+  {
+    path: '/',
+    component: HomeComponent,
+    props: true, // Pass all route-related properties as props
+  },
+  {
+    path: '/charting',
+    component: ChartingComponent,
+    props: true, // Pass all route-related properties as props
+  },
 ]
 
 const router = createRouter({

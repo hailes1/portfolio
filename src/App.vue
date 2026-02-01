@@ -12,8 +12,10 @@
         ></div>
       </div>
       <div>
-        <Home :isSwitchOn="isSwitchOn" />
-        <!-- <router-view></router-view> -->
+        <!-- <Home :isSwitchOn="isSwitchOn" /> -->
+        <router-view v-slot="{ Component, route }">
+          <component :is="Component" :isSwitchOn="isSwitchOn" />
+        </router-view>
       </div>
     </div>
   </div>

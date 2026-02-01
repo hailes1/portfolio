@@ -1,7 +1,7 @@
 <template>
   <cv-header :style="headerStyle">
     <template #header-global>
-      <cv-header-global-action aria-label="Menu" :style="headerItemStyle">
+      <cv-header-global-action aria-label="Menu" @click="navigateTo('/')" :style="headerItemStyle">
         <Home20 />
       </cv-header-global-action>
       <cv-header-global-action aria-label="Switch" @click="onSwitch" :style="headerItemStyle">
@@ -68,6 +68,9 @@ export default {
     },
     onPanelResize() {
       // Handle panel resize if needed
+    },
+    navigateTo(route) {
+      this.$router.push(route)
     },
   },
 }

@@ -1,98 +1,94 @@
 <template>
-  <section class="motion-lab">
-    <header>
-      <h2>Staggered Cards — Timing Study</h2>
-      <cv-button @click="replay" size="sm">Replay</cv-button>
-    </header>
-
-    <div class="controls">
-      <cv-slider v-model="duration" min="80" max="600" label="Animation duration (ms)" />
-      <cv-slider v-model="stagger" min="0" max="300" label="Stagger delay per card (ms)" />
-    </div>
-
-    <cv-tile-group>
-      <cv-tile v-for="card in cards" :key="card.id" class="stagger-card" :light="true">
-        {{ card.title }}
-      </cv-tile>
-    </cv-tile-group>
+  <section class="tile-canvas">
+    <cv-tile
+      v-for="tile in tiles"
+      :key="tile.id"
+      kind="clickable"
+      class="floating-tile"
+      :style="tile.style"
+    >
+      <h4 class="tile-title">{{ tile.title }}</h4>
+      <p class="tile-meta">{{ tile.meta }}</p>
+    </cv-tile>
   </section>
 </template>
+
 <script>
-import { ref, onMounted } from 'vue'
-import { CvTile, CvTileGroup, CvSlider } from '@carbon/vue'
-
 export default {
-  name: 'CardComponent',
-  components: {
-    CvTile,
-    CvTileGroup,
-    CvSlider,
-  },
+  name: 'FloatingTiles',
   setup() {
-    const duration = ref(240) // ms
-    const stagger = ref(90) // ms per card
+    const tiles = [
+      {
+        id: 1,
+        title: 'arena',
+        meta: '2023–',
+        style: {
+          top: '12%',
+          left: '8%',
+          transform: 'rotate(-4deg)',
+        },
+      },
+      {
+        id: 2,
+        title: 'hensyss',
+        meta: '2022–23',
+        style: {
+          top: '38%',
+          left: '42%',
+          transform: 'rotate(3deg)',
+        },
+      },
+      {
+        id: 3,
+        title: 'pokéSearch',
+        meta: '2022',
+        style: {
+          top: '18%',
+          left: '62%',
+          transform: 'rotate(-2deg)',
+        },
+      },
+    ]
 
-    const cards = ref([
-      { id: 1, title: 'Motion gives hierarchy' },
-      { id: 2, title: 'Attention through timing' },
-      { id: 3, title: 'Stagger = sequencing' },
-      { id: 4, title: 'Duration expresses tone' },
-      { id: 5, title: 'Fast feels productive' },
-    ])
-    const animate = () => {
-      const tiles = document.querySelectorAll('.stagger-card')
-      tiles.forEach((tile, i) => {
-        tile.style.transition = `
-          opacity ${duration.value}ms var(--cds-motion-ease-in-out),
-          transform ${duration.value}ms var(--cds-motion-ease-in-out)
-        `
-        tile.style.transitionDelay = `${i * stagger.value}ms`
-        requestAnimationFrame(() => {
-          tile.style.opacity = 1
-          tile.style.transform = 'translateY(0) scale(1)'
-        })
-      })
-    }
-    onMounted(animate)
-    const replay = () => {
-      const tiles = document.querySelectorAll('.stagger-card')
-      tiles.forEach((tile) => {
-        tile.style.opacity = 0
-        tile.style.transform = 'translateY(12px) scale(.96)'
-      })
-      setTimeout(animate, 0)
-    }
-    return {
-      cards,
-      animate,
-      replay,
-    }
+    return { tiles }
   },
 }
 </script>
 
-<style scoped>
-.motion-lab {
-  padding: 2rem;
-  font-family: var(--cds-font-sans);
+<style>
+.tile-canvas {
+  position: relative;
+  height: 80vh;
+  background: var(--cds-background);
+  overflow: hidden;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.floating-tile {
+  position: absolute;
+  width: 260px;
+  padding: 1rem;
+
+  border: 1px solid var(--cds-border-subtle);
+  background: var(--cds-layer);
+  cursor: pointer;
+
+  transition:
+    transform 160ms cubic-bezier(0.2, 0, 0, 1),
+    box-shadow 160ms ease;
 }
 
-.controls {
-  margin: 1rem 0 2rem;
-  max-width: 420px;
-  display: grid;
-  gap: 1rem;
+.floating-tile:hover {
+  transform: translateY(-4px) scale(1.01);
+  z-index: 10;
 }
 
-/* initial state for animation */
-.stagger-card {
-  opacity: 0;
-  transform: translateY(12px) scale(0.96);
+.tile-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.tile-meta {
+  font-size: 0.75rem;
+  color: var(--cds-text-secondary);
 }
 </style>

@@ -1,0 +1,21 @@
+
+export default [
+  { group: 'Iceland', value: 0.972 },
+  { group: 'Norway', value: 0.970 },
+  { group: 'Switzerland', value: 0.970 },
+  { group: 'Denmark', value: 0.962 },
+  { group: 'Germany', value: 0.959 },
+  { group: 'Sweden', value: 0.959 },
+  { group: 'Australia', value: 0.958 },
+  { group: 'Netherlands', value: 0.955 },
+  { group: 'Belgium', value: 0.951 },
+  { group: 'Singapore', value: 0.946 },
+  { group: 'United Kingdom', value: 0.946 },
+  { group: 'United Arab Emirates', value: 0.940 },
+  { group: 'Canada', value: 0.939 },
+  { group: 'Liechtenstein', value: 0.938 },
+  { group: 'New Zealand', value: 0.938 },
+  { group: 'United States', value: 0.938 },
+  { group: 'Korea (Republic of)', value: 0.937 },
+  { group: 'Slovenia', value: 0.931 },
+]

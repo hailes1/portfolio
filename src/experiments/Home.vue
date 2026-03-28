@@ -16,10 +16,20 @@
       <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
         002 - Tone Adjustments and Negative Space</cv-button
       >
-      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+      <cv-button
+        @click="navigateTo('/experiment-scroll')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
         003 - Scroll as Narrative Motion</cv-button
       >
-      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+      <cv-button
+        @click="navigateTo('/experiment-shadows')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
         004 - Shadows as Hierarchy (not decoration)</cv-button
       >
       <!-- <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" /> -->
@@ -55,7 +65,7 @@ import {
   CvCodeSnippet,
   CvIconButton,
 } from '@carbon/vue'
-import CdSpinner from './CdSpinner.vue'
+import CdSpinner from '../components/CdSpinner.vue'
 import { Bee20 } from '@carbon/icons-vue'
 import { ChartEvaluation20 } from '@carbon/icons-vue'
 

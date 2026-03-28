@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import LineChart from './charts/line/LineChart.vue'
+import LineChart from '../components/charts/line/LineChart.vue'
 // import BarChart from './charts/bar/BarChart.vue'
-import UrbanPopulationData from './charts/line/data/UrbanPopulationData'
-import UrbanPopulationLabel from './charts/line/data/UrbanPopulationLabel'
-import EconomicOutlookData from './charts/line/data/EconomicOutlookData'
-import EconomicOutlookLabel from './charts/line/data/EconomicOutlookLabel'
-import HumanDevelopmentIndexData from './charts/bar/data/HumanDevelopmentIndexData'
-import HumanDevelopmentIndexLabel from './charts/bar/data/HumanDevelopmentIndexLabel'
+import UrbanPopulationData from '../components/charts/line/data/UrbanPopulationData'
+import UrbanPopulationLabel from '../components/charts/line/data/UrbanPopulationLabel'
+import EconomicOutlookData from '../components/charts/line/data/EconomicOutlookData'
+import EconomicOutlookLabel from '../components/charts/line/data/EconomicOutlookLabel'
+import HumanDevelopmentIndexData from '../components/charts/bar/data/HumanDevelopmentIndexData'
+import HumanDevelopmentIndexLabel from '../components/charts/bar/data/HumanDevelopmentIndexLabel'
 
 import { cvBreadcrumb } from '@carbon/vue'
 

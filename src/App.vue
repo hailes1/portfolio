@@ -23,7 +23,7 @@
 
 <script>
 import HeaderComponent from './components/Header.vue'
-import HomeComponent from './components/Home.vue'
+import HomeComponent from './experiments/Home.vue'
 
 export default {
   name: 'MainPageLayout',

@@ -1,9 +1,9 @@
 <template>
-  <div id="chart-holder" class="p-1"></div>
+  <div ref="chartHolder" class="p-1"></div>
 </template>
 
 <script>
-import { BarChart } from '@carbon/charts'
+import { SimpleBarChart } from '@carbon/charts'
 import '@carbon/charts/styles.css'
 
 export default {
@@ -19,8 +19,8 @@ export default {
     },
   },
   mounted() {
-    const appElement = document.getElementById('chart-holder')
-    new BarChart(appElement, {
+    const appElement = this.$refs.chartHolder
+    new SimpleBarChart(appElement, {
       data: this.data,
       options: this.options,
     })

@@ -1,5 +1,5 @@
 <template>
-  <div id="chart-holder" class="p-1"></div>
+  <div ref="chartHolder" class="p-1"></div>
 </template>
 
 <script>
@@ -19,7 +19,7 @@ export default {
     },
   },
   mounted() {
-    const appElement = document.getElementById('chart-holder')
+    const appElement = this.$refs.chartHolder
     new LineChart(appElement, {
       data: this.data,
       options: this.options,

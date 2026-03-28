@@ -1,8 +1,9 @@
 export default {
-  title: 'Inequality-adjusted Human Development Index',
+  title: 'Inequality-adjusted Human Development Index (Normalized)',
   axes: {
     left: {
       mapsTo: 'value',
+      title: 'Normalized score (0-100)',
     },
     bottom: {
       mapsTo: 'group',

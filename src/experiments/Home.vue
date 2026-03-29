@@ -50,7 +50,7 @@
       target="_blank"
     >
       <CdSpinner
-        src="src/assets/images/bahir.jpg"
+        :src="nowPlayingSrc"
         class="now-playing"
         :size="150"
         :speed="10"
@@ -71,6 +71,7 @@ import {
   CvIconButton,
 } from '@carbon/vue'
 import CdSpinner from '../components/CdSpinner.vue'
+import bahirCover from '@/assets/images/bahir.jpg'
 import { Bee20 } from '@carbon/icons-vue'
 import { ChartEvaluation20 } from '@carbon/icons-vue'
 
@@ -97,6 +98,7 @@ export default {
   data() {
     return {
       isTileExpanded: false,
+      nowPlayingSrc: bahirCover,
     }
   },
   computed: {

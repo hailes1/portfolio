@@ -245,7 +245,6 @@ export default {
   inset: 0;
   overflow-y: auto;
   z-index: 10;
-  background-color: var(--cds-background);
   transition:
     background-color 180ms ease,
     color 180ms ease;

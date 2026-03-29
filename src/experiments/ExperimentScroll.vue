@@ -1,5 +1,5 @@
 <template>
-  <div ref="scrollWrapperRef" :class="surfaceClass" class="experiment-scroll">
+  <div ref="scrollWrapperRef" class="experiment-scroll">
     <div ref="containerRef" class="scroll-container">
       <div class="sticky-panel">
         <section class="panel" :style="{ opacity: chapterOpacity(0) }">
@@ -62,9 +62,6 @@ export default {
     },
   },
   computed: {
-    surfaceClass() {
-      return this.isSwitchOn ? 'experiment-scroll active' : 'experiment-scroll'
-    },
     breadcrumbClass() {
       return this.isSwitchOn ? 'experiment-page-text active' : 'experiment-page-text'
     },
@@ -93,7 +90,6 @@ export default {
       return (index) => {
         const p = progress.value
         if (index === 0) {
-          // Full at start, fully gone before index 1 appears
           return clamp((0.16 - p) / 0.1, 0, 1)
         }
         if (index === 1) {
@@ -167,16 +163,7 @@ export default {
   inset: 0;
   overflow-y: auto;
   z-index: 10;
-  background: #000000;
-  color: #d3d3d3;
-  transition:
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.experiment-scroll.active {
-  background: #d3d3d3;
-  color: #000000;
+  transition: color 180ms ease;
 }
 
 .scroll-container {

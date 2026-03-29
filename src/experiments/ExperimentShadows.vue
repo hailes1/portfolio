@@ -20,6 +20,7 @@
           <cv-breadcrumb :class="['card-description', subtleClass]">{{
             item.description
           }}</cv-breadcrumb>
+          <cv-tooltip :tip="item.shadow" />
           <div :class="['card-tag', tagClass]">Use: {{ item.hierarchy }}</div>
         </div>
       </div>
@@ -42,11 +43,11 @@
 </template>
 
 <script>
-import { CvBreadcrumb } from '@carbon/vue'
+import { CvBreadcrumb, CvTooltip } from '@carbon/vue'
 
 export default {
   name: 'ExperimentShadows',
-  components: { CvBreadcrumb },
+  components: { CvBreadcrumb, CvTooltip },
   props: {
     isSwitchOn: {
       type: Boolean,
@@ -139,10 +140,6 @@ export default {
   inset: 0;
   overflow-y: auto;
   z-index: 10;
-  background-color: var(--cds-background);
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   transition:
     background-color 180ms ease,
@@ -157,10 +154,6 @@ export default {
   --cds-text-primary: #161616;
   --cds-text-secondary: #525252;
   --cds-link-primary: #0f62fe;
-
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
 }
 
 .page-content {

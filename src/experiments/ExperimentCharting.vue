@@ -9,8 +9,8 @@
 
       <div class="chart-grid">
         <section :class="['chart-panel', panelClass]">
-          <cv-breadcrumb :class="['chart-title', chartingTextClass]"
-            >001: Charting - Bar Charts</cv-breadcrumb
+          <cv-breadcrumb :class="['intro-copy', chartingTextClass]">
+            001: Charting - Bar Charts</cv-breadcrumb
           >
           <div :class="['chart-shell', shellClass]">
             <BarChart :data="humanDevelopmentIndexData" :options="humanDevelopmentIndexLabel" />
@@ -18,7 +18,7 @@
         </section>
 
         <section :class="['chart-panel', panelClass]">
-          <cv-breadcrumb :class="['chart-title', chartingTextClass]"
+          <cv-breadcrumb :class="['intro-copy', chartingTextClass]"
             >002: Charting - Line Charts</cv-breadcrumb
           >
           <div :class="['chart-shell', shellClass]">
@@ -114,7 +114,6 @@ export default {
   --cds-text-primary: #161616;
   --cds-text-secondary: #525252;
   --cds-link-primary: #0f62fe;
-
 }
 
 .page-content {
@@ -151,12 +150,6 @@ h1 {
   padding: 1.5rem;
   background: var(--cds-layer-01);
   transition: background-color 180ms ease;
-}
-
-.chart-title {
-  display: block;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
 }
 
 .chart-shell {

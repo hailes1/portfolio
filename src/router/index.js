@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeComponent from '../experiments/Home.vue'
 import ChartingComponent from '../experiments/ExperimentCharting.vue'
 import ExperimentToneComponent from '../experiments/ExperimentTone.vue'
@@ -34,7 +34,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 

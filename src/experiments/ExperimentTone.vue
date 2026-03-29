@@ -34,14 +34,14 @@
         </cv-breadcrumb>
 
         <div class="toggle-row">
-          <button
+          <cv-button
             v-for="option in exampleOrder"
             :key="option"
             :class="['toggle-button', activeExample === option ? 'active' : '', buttonClass]"
             @click="activeExample = option"
           >
             {{ optionLabels[option] }}
-          </button>
+          </cv-button>
         </div>
 
         <div :class="['example-card', panelClass]">
@@ -51,13 +51,7 @@
               {{ currentExample.description }}
             </cv-breadcrumb>
 
-            <div :class="tagRowClass">
-              <span v-for="tag in ['Tag 1', 'Tag 2']" :key="tag" :class="['tag-chip', chipClass]">
-                {{ tag }}
-              </span>
-            </div>
-
-            <button class="cta-button">Action Button</button>
+            <cv-button class="cta-button">Action Button</cv-button>
           </div>
         </div>
       </section>
@@ -95,12 +89,13 @@
 </template>
 
 <script>
-import { CvBreadcrumb } from '@carbon/vue'
+import { CvBreadcrumb, CvButton } from '@carbon/vue'
 
 export default {
   name: 'ExperimentTone',
   components: {
     CvBreadcrumb,
+    CvButton,
   },
   props: {
     isSwitchOn: {
@@ -164,9 +159,6 @@ export default {
     },
     subtleClass() {
       return this.isSwitchOn ? 'text-subtle active' : 'text-subtle'
-    },
-    toneTextClass() {
-      return this.isSwitchOn ? 'tone-page-text active' : 'tone-page-text'
     },
     panelClass() {
       return this.isSwitchOn ? 'panel-surface active' : 'panel-surface'
@@ -307,8 +299,7 @@ h1 {
   transition: color 180ms ease;
 }
 
-.text-subtle,
-.tone-page-text {
+.text-subtle {
   color: var(--cds-text-secondary);
   transition: color 180ms ease;
 }
@@ -319,7 +310,6 @@ h1 {
 .minor-copy,
 .tone-label,
 .tone-meta,
-.tag-chip,
 .toggle-button,
 .cta-button {
   font-family: 'IBM Plex Mono', monospace;
@@ -505,43 +495,9 @@ h1 {
   margin-bottom: 2.5rem;
 }
 
-.tags-cramped {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.tags-balanced {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
-}
-
-.tags-spacious {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-
-.tag-chip,
 .secondary-card {
   background: var(--cds-layer-02);
   border-radius: 4px;
-}
-
-.tags-cramped .tag-chip {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
-}
-
-.tags-balanced .tag-chip {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-}
-
-.tags-spacious .tag-chip {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
 }
 
 .cta-button {

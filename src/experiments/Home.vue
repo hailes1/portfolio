@@ -13,7 +13,12 @@
       <cv-button @click="navigateTo('/charting')" default="large" size="large">
         <ChartEvaluation20 /> <cv-breadcrumb class="label"> 001 - Charts</cv-breadcrumb>
       </cv-button>
-      <cv-button @click="onClick" aria-label="button story" default="sm" size="sm">
+      <cv-button
+        @click="navigateTo('/experiment-tone')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
         002 - Tone Adjustments and Negative Space</cv-button
       >
       <cv-button

@@ -4,32 +4,41 @@
       <div class="sticky-panel">
         <section class="panel" :style="{ opacity: chapterOpacity(0) }">
           <h2 :class="['panel-heading', headingClass]">003 - Scroll as Narrative Motion</h2>
-          <cv-breadcrumb :class="['narrative-copy', breadcrumbClass]"
-            >Scroll down to see the story unfold</cv-breadcrumb
-          >
         </section>
 
         <section class="panel" :style="{ opacity: chapterOpacity(1) }">
-          <h3 :class="['panel-heading', headingClass]">Chapter One</h3>
+          <h3 :class="['panel-heading', headingClass]">Introduction</h3>
           <cv-breadcrumb :class="['narrative-copy', breadcrumbClass]">
-            Every scroll tells a story. Each pixel moved reveals something new, creating a sense of
-            progression and discovery.
+            Typography: The typography used in most of this project is IBM Plex Mono and IBM Plex
+            Sans. I also intentionally used CvBreadcrumb to show how even a simple component can be
+            used to create a narrative experience.
           </cv-breadcrumb>
         </section>
-
         <section class="panel" :style="{ opacity: chapterOpacity(2) }">
-          <h3 :class="['panel-heading', headingClass]">Chapter Two</h3>
+          <h3 :class="['panel-heading', headingClass]">Chapter One</h3>
           <cv-breadcrumb :class="['narrative-copy', breadcrumbClass]">
-            Motion guides attention, creates rhythm, and transforms scrolling from a mechanical
-            action into an experience.
+            Building a custom scroll animation allows for every scroll to tell a story. Each pixel
+            moved reveals something new, creating a sense of progression and discovery. I made sure
+            that scroll progress is tracked as a single value from 0 to 1, so every chapter can fade
+            in and out at the right time.
           </cv-breadcrumb>
         </section>
 
         <section class="panel" :style="{ opacity: chapterOpacity(3) }">
+          <h3 :class="['panel-heading', headingClass]">Chapter Two</h3>
+          <cv-breadcrumb :class="['narrative-copy', breadcrumbClass]">
+            Motion guides attention, creates rhythm, and transforms scrolling from a mechanical
+            action into an experience. Each chapter uses small opacity windows, so content appears
+            in sequence instead of competing for attention.
+          </cv-breadcrumb>
+        </section>
+
+        <section class="panel" :style="{ opacity: chapterOpacity(4) }">
           <h3 :class="['panel-heading', headingClass]">The End</h3>
           <cv-breadcrumb :class="['narrative-copy', breadcrumbClass]">
             And just like that, the story is told. Scroll-based narrative creates engagement through
-            controlled revelation.
+            controlled revelation. A lightweight animation frame loop keeps motion smooth while
+            avoiding extra work during fast scrolling.
           </cv-breadcrumb>
         </section>
       </div>
@@ -84,16 +93,20 @@ export default {
       return (index) => {
         const p = progress.value
         if (index === 0) {
-          return clamp((0.4 - p) / 0.2, 0, 1)
+          // Full at start, fully gone before index 1 appears
+          return clamp((0.16 - p) / 0.1, 0, 1)
         }
         if (index === 1) {
-          return segmentOpacity(p, 0.2, 0.4, 0.6)
+          return segmentOpacity(p, 0.2, 0.3, 0.42)
         }
         if (index === 2) {
-          return segmentOpacity(p, 0.4, 0.6, 0.8)
+          return segmentOpacity(p, 0.46, 0.55, 0.65)
         }
         if (index === 3) {
-          return clamp((p - 0.6) / 0.2, 0, 1)
+          return segmentOpacity(p, 0.69, 0.78, 0.88)
+        }
+        if (index === 4) {
+          return clamp((p - 0.92) / 0.08, 0, 1)
         }
         return 0
       }
@@ -219,15 +232,15 @@ h3 {
 
 .panel-heading {
   transition: color 180ms ease;
-  color: #d3d3d3;
+  color: #0f62fe;
 }
 
 .experiment-heading {
-  color: #f4f4f4;
+  color: #0f62fe;
 }
 
 .experiment-heading.active {
-  color: #000000;
+  color: #0f62fe;
 }
 
 h2 {

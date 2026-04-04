@@ -5,6 +5,7 @@ import ExperimentToneComponent from '../experiments/ExperimentTone.vue'
 import ExperimentScrollComponent from '../experiments/ExperimentScroll.vue'
 import ExperimentShadowsComponent from '../experiments/ExperimentShadows.vue'
 import ExperimentColorsComponent from '../experiments/ExperimentColors.vue'
+import ExperimentingTransitionsComponent from '../experiments/ExperimentingTransitions.vue'
 
 const routes = [
   {
@@ -35,6 +36,12 @@ const routes = [
   {
     path: '/color-palette',
     component: ExperimentColorsComponent,
+    props: true,
+  },
+  {
+    path: '/state-transitions',
+    alias: ['/experiment-transitions', '/experimenting-transitions'],
+    component: ExperimentingTransitionsComponent,
     props: true,
   },
 ]

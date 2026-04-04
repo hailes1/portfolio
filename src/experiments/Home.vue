@@ -50,6 +50,14 @@
       >
         005 - Color Palette Exploration</cv-button
       >
+      <cv-button
+        @click="navigateTo('/state-transitions')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
+        006 - State Transitions (continuity over jumps)</cv-button
+      >
 
       <!-- <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" /> -->
       <!-- <cv-tag @remove="onRemove" label="Tone Adjustments and Negative Space" kind="green" /> -->

@@ -2,16 +2,17 @@
   <div :class="surfaceClass" class="experiment-colors">
     <div class="page-content">
       <h1 :class="headingClass">005 - Color Palette Exploration</h1>
-      <cv-breadcrumb :class="['intro-copy', subtleClass]">
-        This experiment plans to move beyond picking colors to defining behavior. Colors should communicate state, intent, and hierarchy. They should adapt to context and maintain consistency
+      <cv-breadcrumb :class="['intro-copy', headingClass]">
+        This experiment plans to move beyond picking colors. Colors should communicate state, intent, and hierarchy. They should adapt to context and maintain consistency
         across light and dark modes.
       </cv-breadcrumb>
 
       <!-- Semantic Colors -->
       <section class="section-block">
         <h2 class="section-title">Semantic Colors</h2>
-        <cv-breadcrumb :class="['support-copy', subtleClass]">
+        <cv-breadcrumb :class="['support-copy', headingClass]">
           Colors should convey meaning, not just aesthetics. Notice how these adapt between light and dark themes while maintaining their semantic intent.
+          Why do we attribute meaning to certain colors? How can we ensure our color choices are inclusive and accessible?
         </cv-breadcrumb>
         <div class="semantic-grid">
           <cv-button
@@ -30,7 +31,7 @@
       <!-- Dynamic Theming -->
       <section class="section-block">
         <h2 class="section-title">Dynamic Theming</h2>
-        <cv-breadcrumb :class="['support-copy', subtleClass]">
+        <cv-breadcrumb :class="['support-copy', headingClass]">
           User-controlled theming. Adjust the hue and saturation to generate a complete
           color system that maintains proper contrast and hierarchy.
         </cv-breadcrumb>

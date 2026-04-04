@@ -87,7 +87,7 @@ body.light-mode {
 .main {
   max-height: none;
 }
-
+/*
 .blueprint-container {
   position: relative;
   width: 100%;
@@ -253,5 +253,5 @@ body.light-mode {
   height: 350px;
   border-width: 2.5px;
   transition-delay: 1.5s;
-}
+} */
 </style>

@@ -10,8 +10,13 @@
   </div>
   <div>
     <div class="menu">
-      <cv-button @click="navigateTo('/charting')" default="large" size="large">
-        <ChartEvaluation20 /> <cv-breadcrumb class="label"> 001 - Charts</cv-breadcrumb>
+      <cv-button
+        @click="navigateTo('/charting')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
+        001 - Charts
       </cv-button>
       <cv-button
         @click="navigateTo('/experiment-tone')"
@@ -37,6 +42,15 @@
       >
         004 - Shadows as Hierarchy (not decoration)</cv-button
       >
+      <cv-button
+        @click="navigateTo('/color-palette')"
+        aria-label="button story"
+        default="sm"
+        size="sm"
+      >
+        005 - Color Palette Exploration</cv-button
+      >
+
       <!-- <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" /> -->
       <!-- <cv-tag @remove="onRemove" label="Tone Adjustments and Negative Space" kind="green" /> -->
     </div>

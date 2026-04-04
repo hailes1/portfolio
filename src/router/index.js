@@ -4,6 +4,7 @@ import ChartingComponent from '../experiments/ExperimentCharting.vue'
 import ExperimentToneComponent from '../experiments/ExperimentTone.vue'
 import ExperimentScrollComponent from '../experiments/ExperimentScroll.vue'
 import ExperimentShadowsComponent from '../experiments/ExperimentShadows.vue'
+import ExperimentColorsComponent from '../experiments/ExperimentColors.vue'
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
   {
     path: '/experiment-shadows',
     component: ExperimentShadowsComponent,
+    props: true,
+  },
+  {
+    path: '/color-palette',
+    component: ExperimentColorsComponent,
     props: true,
   },
 ]

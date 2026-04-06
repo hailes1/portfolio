@@ -75,43 +75,43 @@ export default {
       items: [
         {
           id: 1,
-          title: 'Neural Networks',
-          category: 'Machine Learning',
-          description: 'Deep learning architectures',
+          title: 'List → Detail',
+          category: 'UI Transitions',
+          description: 'Expanding context without losing origin',
           details:
-            'Neural networks are layered systems of interconnected units that progressively extract patterns from raw data. Their strength comes from representation learning and non-linear transformations.',
+            'A selected item should transform into its detailed view rather than being replaced. Maintaining position, scale, or motion continuity helps users track where they came from and where they are going.',
         },
         {
           id: 2,
-          title: 'React Patterns',
-          category: 'Web Development',
-          description: 'Component composition strategies',
+          title: 'Collapsed → Expanded',
+          category: 'Progressive Disclosure',
+          description: 'Revealing information in place',
           details:
-            'Patterns such as composition, hooks, and context help teams keep UI systems modular and maintainable. Choosing the pattern depends on reuse needs and state boundaries.',
+            'Content should unfold from its trigger point, preserving spatial relationships. Expansion feels natural when it pushes surrounding elements rather than overlaying or teleporting new content.',
         },
         {
           id: 3,
-          title: 'Typography Systems',
-          category: 'Design',
-          description: 'Scale and hierarchy principles',
+          title: 'Loading → Loaded',
+          category: 'Perceived Performance',
+          description: 'Bridging waiting states gracefully',
           details:
-            'A typography system defines rhythm through consistent size, spacing, and line length. It improves scanability and creates hierarchy before color or decoration is applied.',
+            'Skeletons and placeholders should morph into real content. Matching structure, spacing, and layout reduces cognitive load and makes loading feel like a continuation instead of a reset.',
         },
         {
           id: 4,
-          title: 'Color Theory',
-          category: 'Design',
-          description: 'Visual harmony through color',
+          title: 'Filter → Result',
+          category: 'Data Transformation',
+          description: 'Animating change in datasets',
           details:
-            'Color relationships shape emphasis and emotional tone. Practical systems balance semantic meaning, contrast, and visual consistency across UI surfaces.',
+            'When filters are applied, items should transition—fade, move, or reorder—rather than instantly swapping. This preserves context and helps users understand what changed and why.',
         },
         {
           id: 5,
-          title: 'API Design',
-          category: 'Backend',
-          description: 'RESTful and GraphQL patterns',
+          title: 'Navigation → Context Shift',
+          category: 'Spatial Navigation',
+          description: 'Moving through interface layers',
           details:
-            'Good APIs optimize for clarity, predictability, and evolvability. Resource naming, payload design, and error contracts determine long-term developer experience.',
+            'Transitions between pages or views should imply direction and hierarchy. Sliding, scaling, or depth cues can signal whether the user is drilling down, stepping back, or switching contexts.',
         },
       ],
     }

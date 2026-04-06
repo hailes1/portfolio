@@ -28,9 +28,12 @@
       </section>
 
       <section class="section-block">
-        <h2 class="section-title">The Power of Negative Space</h2>
+        <h2 class="section-title">Negative Space</h2>
         <cv-breadcrumb :class="['support-copy', subtleClass]">
-          Compare these three layouts. Notice how spacing changes readability, pace, and hierarchy.
+          Playing with negative space and leveraging it to your advantage is an excellent way to gain a lot of attention for a design piece.
+          When someone looks at a piece designed with well-composed negative space, the viewer can effortlessly evaluate and appreciate the design.
+          The key factor is that they don’t have to work too hard. A healthy balance between great negative space and intrigue will entice the viewer
+          to spend extra time looking at your design. Which of the following options below do you find most visually appealing? Why do you think that is?
         </cv-breadcrumb>
 
         <div class="toggle-row">

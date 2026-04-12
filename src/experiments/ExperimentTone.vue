@@ -26,23 +26,84 @@
           </article>
         </div>
       </section>
+      <section class="section-block">
+        <h2 class="section-title">Tonal Hierarchy in Data</h2>
+        <cv-breadcrumb :class="['intro-copy', bodyClass]">
+          Data tables use tonal hierarchy to establish visual structure and guide user attention. Background tones create the foundation, surface tones define distinct content areas,
+          interactive tones provide feedback for user actions, and accent tones spotlight critical interactions. This layering of contrast and spacing transforms raw data into
+          organized, scannable information. Notice how each tone serves a specific purpose while maintaining visual harmony across light and dark modes.
+        </cv-breadcrumb>
+        <cv-data-table
+          class="tone-data-table"
+          v-model:rows-selected="selectedRows"
+          @sort="onSort"
+          @update:rows-selected="onVmodel"
+          @overflow-menu-click="onOverflowMenuClick"
+          @row-expanded="onRowExpanded"
+          @pagination="onPagination"
+          :pagination="paginationOptions"
+          :initialSearchValue="searchOpts"
+          >
+          <template #headings>
+            <cv-data-table-heading id="sb-name" heading="Tone" name="name"/>
+            <cv-data-table-heading id="sb-purpose" heading="Purpose" name="purpose"/>
+            <cv-data-table-heading id="sb-usage" heading="Usage Context" />
+            <cv-data-table-heading id="sb-light" heading="Light Mode" />
+            <cv-data-table-heading id="sb-dark" heading="Dark Mode" />
+          </template>
+          <template #data>
+            <cv-data-table-row v-for="row in originalTestData" :id="row.name" :key="row.name" :value="row.name">
+              <cv-data-table-cell>{{row.name}}</cv-data-table-cell>
+              <cv-data-table-cell>{{row.purpose}}</cv-data-table-cell>
+              <cv-data-table-cell>{{row.usage}}</cv-data-table-cell>
+              <cv-data-table-cell><span class="tone-preview" :style="{ backgroundColor: row.lightBg, color: '#000' }">{{ row.lightBg }}</span></cv-data-table-cell>
+              <cv-data-table-cell><span class="tone-preview" :style="{ backgroundColor: row.darkBg, color: '#fff' }">{{ row.darkBg }}</span></cv-data-table-cell>
+            </cv-data-table-row>
+          </template>
+        </cv-data-table>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import { CvBreadcrumb } from '@carbon/vue'
+import { CvBreadcrumb, CvDataTable, CvDataTableHeading, CvDataTableRow, CvDataTableCell } from '@carbon/vue'
 
 export default {
   name: 'ExperimentTone',
   components: {
     CvBreadcrumb,
+    CvDataTable,
+    CvDataTableHeading,
+    CvDataTableRow,
+    CvDataTableCell,
   },
   props: {
     isSwitchOn: {
       type: Boolean,
       default: false,
     },
+  },
+  data() {
+    return {
+      selectedRows: [],
+      searchOpts: '',
+      originalTestData: [
+        { name: 'Background', purpose: 'Base layer', usage: 'Primary canvas for entire interface', lightBg: '#d3d3d3', darkBg: '#000000' },
+        { name: 'Surface', purpose: 'Cards, panels, containers', usage: 'Elevated content areas', lightBg: '#f4f4f4', darkBg: '#262626' },
+        { name: 'Interactive', purpose: 'Hover states, focus indicators', usage: 'User interaction feedback', lightBg: '#e0e0e0', darkBg: '#393939' },
+        { name: 'Accent', purpose: 'Primary actions, key elements', usage: 'Draw attention to important interactions', lightBg: '#0f62fe', darkBg: '#0f62fe' },
+      ],
+      paginationOptions: {
+        pageSizesLabel: 'Tones per page:',
+        pageNumberLabel: 'Tone page:',
+        backwardText: 'Previous tone page',
+        forwardText: 'Next tone page',
+        pageSizes: [10, 20, 30],
+        numberOfItems: 4,
+        actualItemsOnPage: 4,
+      },
+    }
   },
   computed: {
     surfaceClass() {
@@ -87,6 +148,11 @@ export default {
       ]
     },
   },
+  methods: {
+    onVmodel(value) {
+      this.selectedRows = value
+    },
+  },
 }
 </script>
 
@@ -102,6 +168,19 @@ export default {
   --cds-link-primary: #78a9ff;
   --cds-accent: #0f62fe;
   --cds-accent-hover: #0353e9;
+  --tone-table-bg: #161616;
+  --tone-table-head-bg: #262626;
+  --tone-table-row-bg: #1f1f1f;
+  --tone-table-row-alt-bg: #242424;
+  --tone-table-row-hover-bg: #303030;
+  --tone-table-border: #393939;
+  --tone-table-text: #f4f4f4;
+  --tone-table-head-text: #f4f4f4;
+  --tone-pagination-bg: #262626;
+  --tone-pagination-border: #393939;
+  --tone-pagination-text: #f4f4f4;
+  --tone-pagination-btn-bg: #303030;
+  --tone-pagination-btn-hover-bg: #3a3a3a;
 
   position: fixed;
   inset: 0;
@@ -123,6 +202,19 @@ export default {
   --cds-link-primary: #0f62fe;
   --cds-accent: #0f62fe;
   --cds-accent-hover: #0353e9;
+  --tone-table-bg: #f4f4f4;
+  --tone-table-head-bg: #e8e8e8;
+  --tone-table-row-bg: #ffffff;
+  --tone-table-row-alt-bg: #f7f7f7;
+  --tone-table-row-hover-bg: #ededed;
+  --tone-table-border: #d0d0d0;
+  --tone-table-text: #161616;
+  --tone-table-head-text: #161616;
+  --tone-pagination-bg: #e8e8e8;
+  --tone-pagination-border: #d0d0d0;
+  --tone-pagination-text: #161616;
+  --tone-pagination-btn-bg: #ffffff;
+  --tone-pagination-btn-hover-bg: #f2f2f2;
 }
 
 .page-content {
@@ -171,6 +263,86 @@ h1 {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 3rem;
+}
+
+.tone-data-table {
+  margin-top: 1rem;
+}
+
+.tone-data-table :deep(table),
+.tone-data-table :deep(.cds--data-table),
+.tone-data-table :deep(.bx--data-table) {
+  background: var(--tone-table-bg);
+  color: var(--tone-table-text);
+}
+
+.tone-data-table :deep(thead th),
+.tone-data-table :deep(.cds--data-table thead th),
+.tone-data-table :deep(.bx--data-table thead th) {
+  background: var(--tone-table-head-bg);
+  color: var(--tone-table-head-text);
+  border-bottom: 1px solid var(--tone-table-border);
+}
+
+.tone-data-table :deep(tbody td),
+.tone-data-table :deep(.cds--data-table tbody td),
+.tone-data-table :deep(.bx--data-table tbody td) {
+  background: var(--tone-table-row-bg);
+  color: var(--tone-table-text);
+  border-bottom: 1px solid var(--tone-table-border);
+}
+
+.tone-data-table :deep(tbody tr:nth-child(even) td),
+.tone-data-table :deep(.cds--data-table tbody tr:nth-child(even) td),
+.tone-data-table :deep(.bx--data-table tbody tr:nth-child(even) td) {
+  background: var(--tone-table-row-alt-bg);
+}
+
+.tone-data-table :deep(tbody tr:hover td),
+.tone-data-table :deep(.cds--data-table tbody tr:hover td),
+.tone-data-table :deep(.bx--data-table tbody tr:hover td) {
+  background: var(--tone-table-row-hover-bg);
+}
+
+.tone-data-table :deep(.cds--pagination),
+.tone-data-table :deep(.bx--pagination) {
+  background: var(--tone-pagination-bg);
+  color: var(--tone-pagination-text);
+  border-top: 1px solid var(--tone-pagination-border);
+}
+
+.tone-data-table :deep(.cds--pagination__left),
+.tone-data-table :deep(.cds--pagination__right),
+.tone-data-table :deep(.bx--pagination__left),
+.tone-data-table :deep(.bx--pagination__right) {
+  background: var(--tone-pagination-bg);
+}
+
+.tone-data-table :deep(.cds--pagination__text),
+.tone-data-table :deep(.bx--pagination__text),
+.tone-data-table :deep(.cds--select-input),
+.tone-data-table :deep(.bx--select-input),
+.tone-data-table :deep(.cds--select-option),
+.tone-data-table :deep(.bx--select-option) {
+  color: var(--tone-pagination-text);
+}
+
+.tone-data-table :deep(.cds--select-input),
+.tone-data-table :deep(.bx--select-input) {
+  background: var(--tone-pagination-btn-bg);
+  border-color: var(--tone-pagination-border);
+}
+
+.tone-data-table :deep(.cds--pagination__button),
+.tone-data-table :deep(.bx--pagination__button) {
+  background: var(--tone-pagination-btn-bg);
+  color: var(--tone-pagination-text);
+  border-left: 1px solid var(--tone-pagination-border);
+}
+
+.tone-data-table :deep(.cds--pagination__button:hover:not(:disabled)),
+.tone-data-table :deep(.bx--pagination__button:hover:not(:disabled)) {
+  background: var(--tone-pagination-btn-hover-bg);
 }
 
 .tone-grid {
@@ -247,6 +419,18 @@ h1 {
 
 .accent-meta {
   color: rgba(255, 255, 255, 0.72);
+}
+
+.tone-preview {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 640px) {

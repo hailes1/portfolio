@@ -68,7 +68,7 @@
       [Click on the buttons to explore more experiments]
     </cv-breadcrumb>
     <a
-      href="https://open.spotify.com/album/7f077HG1g8MBMhC3eBD7fC?si=3s_5ge0eQo-A6WtJgdGlsA"
+      href="https://open.spotify.com/album/47TQxiorHSmf0UG6MAV8MD"
       target="_blank"
     >
       <CdSpinner
@@ -93,7 +93,7 @@ import {
   CvIconButton,
 } from '@carbon/vue'
 import CdSpinner from '../components/CdSpinner.vue'
-import bahirCover from '@/assets/images/bahir.jpg'
+import asalafiCover from '@/assets/images/asalafi.jpeg'
 import { Bee20 } from '@carbon/icons-vue'
 import { ChartEvaluation20 } from '@carbon/icons-vue'
 
@@ -120,7 +120,7 @@ export default {
   data() {
     return {
       isTileExpanded: false,
-      nowPlayingSrc: bahirCover,
+      nowPlayingSrc: asalafiCover,
     }
   },
   computed: {

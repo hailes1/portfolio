@@ -167,7 +167,7 @@ h1 {
   font-weight: 400;
   line-height: 1.45;
   letter-spacing: 0.32px;
-  color: var(--cds-text-secondary);
+  color: var(--cds-text-primary);
 
   &.active {
     color: var(--cds-text-primary);

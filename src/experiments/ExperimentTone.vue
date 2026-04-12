@@ -26,129 +26,23 @@
           </article>
         </div>
       </section>
-
-      <section class="section-block">
-        <h2 class="section-title">Negative Space</h2>
-        <cv-breadcrumb :class="['support-copy', subtleClass]">
-          Playing with negative space and leveraging it to your advantage is an excellent way to gain a lot of attention for a design piece.
-          When someone looks at a piece designed with well-composed negative space, the viewer can effortlessly evaluate and appreciate the design.
-          The key factor is that they don’t have to work too hard. A healthy balance between great negative space and intrigue will entice the viewer
-          to spend extra time looking at your design. Which of the following options below do you find most visually appealing? Why do you think that is?
-        </cv-breadcrumb>
-
-        <div class="toggle-row">
-          <cv-button
-            v-for="option in exampleOrder"
-            :key="option"
-            :class="['toggle-button', activeExample === option ? 'active' : '', buttonClass]"
-            @click="activeExample = option"
-          >
-            {{ optionLabels[option] }}
-          </cv-button>
-        </div>
-
-        <div :class="['example-card', panelClass]">
-          <div :class="exampleSpacingClass">
-            <h3 :class="exampleTitleClass">Product Title Here</h3>
-            <cv-breadcrumb :class="['example-copy', subtleClass]">
-              {{ currentExample.description }}
-            </cv-breadcrumb>
-
-            <cv-button class="cta-button">Action Button</cv-button>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-block">
-        <h2 class="section-title">Combining Tone + Space</h2>
-        <cv-breadcrumb :class="['support-copy', subtleClass]">
-          When tonal shifts and spacing work together, the interface creates hierarchy without
-          relying on heavy borders or decoration.
-        </cv-breadcrumb>
-
-        <div :class="['composition-shell', panelClass]">
-          <div :class="['primary-content', shellClass]">
-            <h4 :class="['subheading', headingClass]">Primary Content Area</h4>
-            <cv-breadcrumb :class="['support-copy', subtleClass]">
-              Notice how the background tone shifts create separation between sections, while the
-              padding creates breathing room within each section.
-            </cv-breadcrumb>
-          </div>
-
-          <div class="secondary-grid">
-            <div
-              v-for="card in secondaryCards"
-              :key="card.title"
-              :class="['secondary-card', chipClass]"
-            >
-              <h5 :class="['minor-heading', headingClass]">{{ card.title }}</h5>
-              <cv-breadcrumb :class="['minor-copy', subtleClass]">{{ card.copy }}</cv-breadcrumb>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   </div>
 </template>
 
 <script>
-import { CvBreadcrumb, CvButton } from '@carbon/vue'
+import { CvBreadcrumb } from '@carbon/vue'
 
 export default {
   name: 'ExperimentTone',
   components: {
     CvBreadcrumb,
-    CvButton,
   },
   props: {
     isSwitchOn: {
       type: Boolean,
       default: false,
     },
-  },
-  data() {
-    return {
-      activeExample: 'balanced',
-      optionLabels: {
-        cramped: 'Cramped',
-        balanced: 'Balanced',
-        spacious: 'Spacious',
-      },
-      exampleOrder: ['cramped', 'balanced', 'spacious'],
-      exampleConfigs: {
-        cramped: {
-          description:
-            'This version minimizes spacing. Elements crowd each other, the text pushes against the container, and scanning becomes harder.',
-          spacingClass: 'example-spacing-cramped',
-          titleClass: 'title-cramped',
-          tagRowClass: 'tags-cramped',
-        },
-        balanced: {
-          description:
-            'This version uses measured spacing. There is enough room for the eye to rest, while the content still feels efficient and structured.',
-          spacingClass: 'example-spacing-balanced',
-          titleClass: 'title-balanced',
-          tagRowClass: 'tags-balanced',
-        },
-        spacious: {
-          description:
-            'This version uses generous spacing. It feels premium and deliberate, but it also consumes more screen space and reduces density.',
-          spacingClass: 'example-spacing-spacious',
-          titleClass: 'title-spacious',
-          tagRowClass: 'tags-spacious',
-        },
-      },
-      secondaryCards: [
-        {
-          title: 'Secondary Card',
-          copy: 'Subtle tone shift',
-        },
-        {
-          title: 'Secondary Card',
-          copy: 'Same hierarchy level',
-        },
-      ],
-    }
   },
   computed: {
     surfaceClass() {
@@ -159,33 +53,6 @@ export default {
     },
     bodyClass() {
       return this.isSwitchOn ? 'text-primary active' : 'text-primary'
-    },
-    subtleClass() {
-      return this.isSwitchOn ? 'text-subtle active' : 'text-subtle'
-    },
-    panelClass() {
-      return this.isSwitchOn ? 'panel-surface active' : 'panel-surface'
-    },
-    shellClass() {
-      return this.isSwitchOn ? 'shell-surface active' : 'shell-surface'
-    },
-    chipClass() {
-      return this.isSwitchOn ? 'chip-surface active' : 'chip-surface'
-    },
-    buttonClass() {
-      return this.isSwitchOn ? 'toggle-surface active' : 'toggle-surface'
-    },
-    currentExample() {
-      return this.exampleConfigs[this.activeExample]
-    },
-    exampleSpacingClass() {
-      return this.currentExample.spacingClass
-    },
-    exampleTitleClass() {
-      return this.currentExample.titleClass
-    },
-    tagRowClass() {
-      return this.currentExample.tagRowClass
     },
     toneLayers() {
       return [
@@ -287,34 +154,14 @@ h1 {
   color: var(--cds-link-primary);
 }
 
-.subheading {
-  font-size: 1.25rem;
-  margin: 0 0 1.5rem;
-}
-
-.minor-heading {
-  font-size: 1rem;
-  margin: 0 0 0.75rem;
-}
-
 .text-primary {
   color: var(--cds-text-primary);
   transition: color 180ms ease;
 }
 
-.text-subtle {
-  color: var(--cds-text-secondary);
-  transition: color 180ms ease;
-}
-
 .intro-copy,
-.support-copy,
-.example-copy,
-.minor-copy,
 .tone-label,
-.tone-meta,
-.toggle-button,
-.cta-button {
+.tone-meta {
   font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -324,14 +171,6 @@ h1 {
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 3rem;
-}
-
-.support-copy {
-  display: block;
-  max-width: 640px;
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 2rem;
 }
 
 .tone-grid {
@@ -410,161 +249,9 @@ h1 {
   color: rgba(255, 255, 255, 0.72);
 }
 
-.toggle-row {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.toggle-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: var(--cds-layer-01);
-  color: var(--cds-text-primary);
-  transition:
-    background-color 180ms ease,
-    color 180ms ease;
-}
-
-.toggle-button.active {
-  background: var(--cds-accent);
-  color: #ffffff;
-}
-
-.example-card,
-.composition-shell {
-  max-width: 800px;
-  background: var(--cds-layer-01);
-  border: 1px solid var(--cds-border-subtle);
-  border-radius: 4px;
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease;
-}
-
-.example-card {
-  max-width: 640px;
-}
-
-.example-spacing-cramped {
-  padding: 1rem;
-}
-
-.example-spacing-balanced {
-  padding: 2rem;
-}
-
-.example-spacing-spacious {
-  padding: 3rem;
-}
-
-.title-cramped {
-  font-size: 1.25rem;
-  margin: 0 0 0.25rem;
-}
-
-.title-balanced {
-  font-size: 1.5rem;
-  margin: 0 0 1rem;
-}
-
-.title-spacious {
-  font-size: 1.75rem;
-  margin: 0 0 1.5rem;
-}
-
-.example-copy {
-  display: block;
-}
-
-.example-spacing-cramped .example-copy {
-  font-size: 0.75rem;
-  line-height: 1.3;
-  margin-bottom: 0.5rem;
-}
-
-.example-spacing-balanced .example-copy {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.example-spacing-spacious .example-copy {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
-}
-
-.secondary-card {
-  background: var(--cds-layer-02);
-  border-radius: 4px;
-}
-
-.cta-button {
-  width: 100%;
-  border: none;
-  border-radius: 4px;
-  background: var(--cds-accent);
-  color: #ffffff;
-  cursor: pointer;
-}
-
-.example-spacing-cramped .cta-button {
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-}
-
-.example-spacing-balanced .cta-button {
-  padding: 0.875rem 1.5rem;
-  font-size: 0.875rem;
-}
-
-.example-spacing-spacious .cta-button {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-}
-
-.composition-shell {
-  padding: 3rem;
-}
-
-.primary-content {
-  background: var(--cds-background);
-  padding: 2.5rem;
-  border-radius: 4px;
-  margin-bottom: 2rem;
-}
-
-.secondary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
-
-.secondary-card {
-  padding: 1.5rem;
-}
-
-.minor-copy {
-  display: block;
-  font-size: 0.75rem;
-  line-height: 1.5;
-}
-
 @media (max-width: 640px) {
   .page-content {
     padding: 4rem 1rem 2rem;
-  }
-
-  .composition-shell {
-    padding: 1.5rem;
-  }
-
-  .primary-content {
-    padding: 1.5rem;
   }
 }
 </style>

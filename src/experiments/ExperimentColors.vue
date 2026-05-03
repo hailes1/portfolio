@@ -20,6 +20,7 @@
             :key="type"
             class="semantic-btn"
             :style="getSemanticStyle(type)"
+            :icon="getIcon(type)"
             @mouseenter="(e) => onSemanticEnter(e, type)"
             @mouseleave="(e) => onSemanticLeave(e, type)"
           >
@@ -33,6 +34,7 @@
 
 <script>
 import { CvBreadcrumb, CvButton } from '@carbon/vue'
+import { CheckmarkFilled20, WarningFilled20, Misuse20, InformationFilled20 } from '@carbon/icons-vue'
 export default {
   name: 'ExperimentColors',
   props: {
@@ -44,30 +46,30 @@ export default {
   components: {
     CvBreadcrumb,
     CvButton,
+    CheckmarkFilled20,
+    WarningFilled20,
+    Misuse20,
+    InformationFilled20,
   },
   data() {
     return {
       semanticColors: {
-        success: {
+        Success: {
           light: { bg: '#24a148', fg: '#ffffff', hover: '#198038' },
           dark: { bg: '#24a148', fg: '#ffffff', hover: '#198038' },
         },
-        warning: {
+        Warning: {
           light: { bg: '#f1c21b', fg: '#161616', hover: '#d2a106' },
           dark: { bg: '#f1c21b', fg: '#161616', hover: '#d2a106' },
         },
-        error: {
+        Error: {
           light: { bg: '#da1e28', fg: '#ffffff', hover: '#ba1b23' },
           dark: { bg: '#da1e28', fg: '#ffffff', hover: '#ba1b23' },
         },
-        info: {
+        Info: {
           light: { bg: '#0043ce', fg: '#ffffff', hover: '#0353e9' },
           dark: { bg: '#0043ce', fg: '#ffffff', hover: '#0353e9' },
-        },
-        neutral: {
-          light: { bg: '#8d8d8d', fg: '#161616', hover: '#6f6f6f' },
-          dark: { bg: '#8d8d8d', fg: '#161616', hover: '#6f6f6f' },
-        },
+        }
       },
     }
   },
@@ -94,6 +96,20 @@ export default {
         padding: '1.5rem 1rem',
         cursor: 'pointer',
         transition: 'background-color 0.2s',
+      }
+    },
+    getIcon(type) {
+      switch (type) {
+        case 'Success':
+          return CheckmarkFilled20
+        case 'Warning':
+          return WarningFilled20
+        case 'Error':
+          return Misuse20
+        case 'Info':
+          return InformationFilled20
+        default:
+          return null
       }
     },
     onSemanticEnter(e, type) {

@@ -3,7 +3,7 @@ import HomeComponent from '../experiments/Home.vue'
 import ChartingComponent from '../experiments/ExperimentCharting.vue'
 import ExperimentToneComponent from '../experiments/ExperimentTone.vue'
 import ExperimentScrollComponent from '../experiments/ExperimentScroll.vue'
-import ExperimentShadowsComponent from '../experiments/ExperimentShadows.vue'
+// import ExperimentShadowsComponent from '../experiments/ExperimentShadows.vue'
 import ExperimentColorsComponent from '../experiments/ExperimentColors.vue'
 import ExperimentingTransitionsComponent from '../experiments/ExperimentingTransitions.vue'
 
@@ -28,11 +28,11 @@ const routes = [
     component: ExperimentScrollComponent,
     props: true,
   },
-  {
-    path: '/experiment-shadows',
-    component: ExperimentShadowsComponent,
-    props: true,
-  },
+  // {
+  //   path: '/experiment-shadows',
+  //   component: ExperimentShadowsComponent,
+  //   props: true,
+  // },
   {
     path: '/color-palette',
     component: ExperimentColorsComponent,

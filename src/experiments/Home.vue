@@ -34,21 +34,21 @@
       >
         003 - Scroll as Narrative Motion</cv-button
       >
-      <cv-button
+      <!-- <cv-button
         @click="navigateTo('/experiment-shadows')"
         aria-label="button story"
         default="sm"
         size="sm"
       >
         004 - Shadows as Hierarchy (not decoration)</cv-button
-      >
+      > -->
       <cv-button
         @click="navigateTo('/color-palette')"
         aria-label="button story"
         default="sm"
         size="sm"
       >
-        005 - Color Palette Exploration</cv-button
+        004 - Color Palette Exploration</cv-button
       >
       <cv-button
         @click="navigateTo('/state-transitions')"
@@ -56,7 +56,7 @@
         default="sm"
         size="sm"
       >
-        006 - State Transitions (continuity over jumps)</cv-button
+        005 - State Transitions (continuity over jumps)</cv-button
       >
 
       <!-- <cv-tag @remove="onRemove" label="Timing Studies and Motion" kind="blue" /> -->

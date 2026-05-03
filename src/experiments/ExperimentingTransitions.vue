@@ -49,12 +49,24 @@
           </transition>
         </div>
       </section>
+      <section class="section-block">
+        <h2 class="section-title">Ethical Nudges as Context Shift</h2>
+        <cv-breadcrumb :class="['support-copy', subtleClass]">
+          This panel borrows from an ethical UX article and reframes the switcher as a way to compare supportive nudges against manipulative patterns without losing the surrounding context.
+        </cv-breadcrumb>
+        <ContentSwitch :is-switch-on="isSwitchOn" :topics="switcherTopics" />
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import { CvBreadcrumb, CvButton, CvTile } from '@carbon/vue'
+import {
+  CvBreadcrumb,
+  CvButton,
+  CvTile,
+} from '@carbon/vue'
+import ContentSwitch from '../components/ContentSwitch.vue'
 
 export default {
   name: 'ExperimentingTransitions',
@@ -62,6 +74,7 @@ export default {
     CvBreadcrumb,
     CvButton,
     CvTile,
+    ContentSwitch,
   },
   props: {
     isSwitchOn: {
@@ -125,6 +138,55 @@ export default {
     },
     subtleClass() {
       return this.isSwitchOn ? 'text-subtle active' : 'text-subtle'
+    },
+    switcherTopics() {
+      return [
+        {
+          id: 11,
+          title: 'Helpful Guidance Bubbles',
+          category: 'Ethical Nudges',
+          description: 'Tooltips can teach a feature without steering users into only one favorable action.',
+          details:
+            'Guidance bubbles are ethical when they educate, stay dismissible, and leave competing choices equally understandable. The manipulation starts when the overlay spotlights only the business-preferred path and quietly hides alternatives.',
+          note: 'Ask who benefits first: the user or the platform.',
+        },
+        {
+          id: 12,
+          title: 'Defaults and Consent',
+          category: 'Choice Architecture',
+          description: 'Pre-selected options are powerful because users often accept the path of least resistance.',
+          details:
+            'Defaults are not neutral. An opt-in that quietly signs someone up for marketing or data sharing may lift conversion, but it weakens informed consent. Ethical defaults need explanation, reversibility, and visible alternatives.',
+          note: 'A default should reduce effort, not remove agency.',
+        },
+        {
+          id: 13,
+          title: 'Color Hierarchy and Pressure',
+          category: 'Visual Persuasion',
+          description: 'A brighter primary action can guide attention, but it can also bias choice regardless of intent.',
+          details:
+            'Color, contrast, and button weight are micro-signals with macro-impact. Ethical use clarifies the recommended path while preserving the legitimacy of adjacent options. Dark patterns weaponize prominence so declining feels hidden, dangerous, or second-class.',
+          note: 'Visual emphasis should clarify, not coerce.',
+        },
+        {
+          id: 14,
+          title: 'Progress and Commitment Bias',
+          category: 'Behavioral Psychology',
+          description: 'Progress indicators can motivate completion, but they can also exploit our discomfort with unfinished tasks.',
+          details:
+            'People dislike leaving sequences incomplete, which is why multi-step progress bars feel persuasive. Ethical progress indicators help users plan effort and understand where they are. Manipulative ones create artificial momentum to keep people moving toward a business goal they might not otherwise choose.',
+          note: 'Use momentum to support clarity, not compliance.',
+        },
+        {
+          id: 15,
+          title: 'Icons, Microcopy, and Framing',
+          category: 'Micro-signals',
+          description: 'A checkmark can signal safety, while warning language can make an alternative feel risky.',
+          details:
+            'Tiny cues shape interpretation fast. An approving icon next to one option and a caution symbol near another can make one path feel morally or practically correct before the user has evaluated the choice. The ethical test is whether the cue reflects reality or manufactures pressure.',
+          note: 'Microcopy should inform, not emotionally corner.',
+        },
+      ]
     },
   },
 }

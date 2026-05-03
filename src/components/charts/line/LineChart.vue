@@ -17,13 +17,62 @@ export default {
       type: Object,
       required: true,
     },
+    theme: {
+      type: String,
+      default: 'g10',
+    },
+  },
+  data() {
+    return {
+      chart: null,
+    }
   },
   mounted() {
-    const appElement = this.$refs.chartHolder
-    new LineChart(appElement, {
-      data: this.data,
-      options: this.options,
-    })
+    this.renderChart()
+  },
+  beforeUnmount() {
+    this.chart?.destroy()
+  },
+  watch: {
+    data: {
+      deep: true,
+      handler() {
+        this.updateChart()
+      },
+    },
+    options: {
+      deep: true,
+      handler() {
+        this.updateChart()
+      },
+    },
+    theme() {
+      this.updateChart()
+    },
+  },
+  methods: {
+    buildOptions() {
+      return {
+        ...this.options,
+        theme: this.theme,
+      }
+    },
+    renderChart() {
+      const appElement = this.$refs.chartHolder
+      this.chart = new LineChart(appElement, {
+        data: this.data,
+        options: this.buildOptions(),
+      })
+    },
+    updateChart() {
+      if (!this.chart) {
+        this.renderChart()
+        return
+      }
+
+      this.chart.model.setData(this.data)
+      this.chart.model.setOptions(this.buildOptions())
+    },
   },
 }
 </script>

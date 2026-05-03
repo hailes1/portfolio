@@ -13,7 +13,7 @@
             001: Charting - Bar Charts</cv-breadcrumb
           >
           <div :class="['chart-shell', shellClass]">
-            <BarChart :data="humanDevelopmentIndexData" :options="humanDevelopmentIndexLabel" />
+            <BarChart :data="humanDevelopmentIndexData" :options="humanDevelopmentIndexLabel" :theme="chartTheme" />
           </div>
         </section>
 
@@ -22,10 +22,10 @@
             >002: Charting - Line Charts</cv-breadcrumb
           >
           <div :class="['chart-shell', shellClass]">
-            <LineChart :data="urbanData" :options="urbanOptions" />
+            <LineChart :data="urbanData" :options="urbanOptions" :theme="chartTheme" />
           </div>
           <div :class="['chart-shell', shellClass]">
-            <LineChart :data="economicData" :options="economicOptions" />
+            <LineChart :data="economicData" :options="economicOptions" :theme="chartTheme" />
           </div>
         </section>
       </div>
@@ -83,6 +83,9 @@ export default {
     },
     shellClass() {
       return this.isSwitchOn ? 'shell-surface active' : 'shell-surface'
+    },
+    chartTheme() {
+      return this.isSwitchOn ? 'g10' : 'g100'
     },
   },
 }
@@ -172,6 +175,39 @@ h1 {
   &.active {
     color: var(--cds-text-primary);
   }
+}
+
+.experiment-charting :deep(.bx--cc--chart-wrapper text) {
+  fill: var(--cds-text-secondary);
+}
+
+.experiment-charting :deep(.bx--cc--axes g.axis .axis-title),
+.experiment-charting :deep(.bx--cc--title p.title),
+.experiment-charting :deep(div.bx--cc--legend div.legend-item p),
+.experiment-charting :deep(.bx--chart-holder .bx--cc--toolbar svg) {
+  color: var(--cds-text-primary);
+  fill: var(--cds-text-primary);
+}
+
+.experiment-charting :deep(.bx--cc--axes g.axis g.tick text),
+.experiment-charting :deep(.bx--cc--chart-wrapper p) {
+  fill: var(--cds-text-secondary);
+  color: var(--cds-text-secondary);
+}
+
+.experiment-charting :deep(.bx--cc--axes g.axis g.tick line),
+.experiment-charting :deep(.bx--cc--grid g.x.grid g.tick line),
+.experiment-charting :deep(.bx--cc--grid g.y.grid g.tick line),
+.experiment-charting :deep(div.bx--cc--legend div.legend-item div.checkbox:not(.active)) {
+  stroke: var(--cds-layer-02);
+  border-color: var(--cds-layer-02);
+}
+
+.experiment-charting :deep(.bx--chart-holder.filled),
+.experiment-charting :deep(.bx--chart-holder.fullscreen),
+.experiment-charting :deep(.bx--chart-holder.filled .bx--cc--chart-wrapper),
+.experiment-charting :deep(.bx--chart-holder.fullscreen .bx--cc--chart-wrapper) {
+  background-color: var(--cds-layer-02);
 }
 
 :deep(.p-1) {
